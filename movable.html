@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活动页面</title>
+<style>
+    /* 共用样式 */
+			body {
+			    font-family: 'LXGWWenKai-Regular', sans-serif;
+			    margin: 0;
+			    padding: 0;
+			    background: rgba(255,255,255,0.5);
+			    backdrop-filter: blur(10px);
+			}
+			
+			@font-face {
+			    font-family: 'LXGWWenKai-Regular'; /* 第二个自定义字体名称 */
+			    src: url('fonts/LXGWWenKai-Regular.ttf') format('truetype'); /* 第二个字体文件路径和格式 */
+			}
+
+            button {
+				font-family: 'LXGWWenKai-Regular', sans-serif;
+			}
+			
+			div {
+			    font-family: 'LXGWWenKai-Regular', sans-serif;
+			}
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+    .header {
+        position: relative;
+        height: 20vh;
+        text-align: center;
+    }
+    .blurry-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(5px);
+        z-index: 1;
+    }
+    .clear-image {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px; /* 设置宽度 */
+        height: 150px; /* 设置高度 */
+        object-fit: none;
+        z-index: 2;
+    }
+    .navigation {
+        display: flex;
+        align-items: center;
+        background: #f0f0f0;
+        padding: 10px;
+    }
+    .button-container {
+        display: flex;
+    }
+    .button {
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(43,174,133); /* 铜绿背景，半透明 */
+        margin-right: 5px;
+        transition: background-color 0.3s; /* 添加过渡效果 */
+    }
+    .button.selected {
+        background-color: rgba(32,127,76); /* 选中按钮为薄荷绿 */
+    }
+    .content {
+        padding: 8px;
+    }
+    .activity {
+        border: 2px solid #1772f6;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    .activity .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .activity .top img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .activity .top .user-info {
+        display: flex;
+        align-items: center;
+    }
+    .activity .top .user-info div {
+        background: rgba(203, 203, 203, 0.5);
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    .activity .top div {
+        display: inline-block;
+        background: rgba(203, 203, 203, 0.5);
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .activity .bottom {
+        display: flex;
+        justify-content: space-between;
+    }
+    .activity .bottom img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .title {
+        font-weight: bold;
+    }
+    .content-container {
+    height: 60vh; /* 设置容器高度 */
+    overflow-y: auto; /* 垂直滚动条 */
+    }
+</style>
+</head>
+<body>
+<div class="header">
+    <img src="img/FFl-BackGround  (26).jpg" class="blurry-image" alt="模糊图片">
+    <img src="img/FFl-BackGround  (26).jpg" class="clear-image" alt="清晰图片">
+</div>
+<div class="navigation">
+    <div class="button-container">
+        <button class="button selected">全部活动</button>
+        <button class="button">活动预告</button>
+        <button class="button">活动报名</button>
+        <button class="button">报名结束</button>
+        <button class="button">活动进行</button>
+    </div>
+    <div style="margin-left: auto;">
+        <button class="button" style="background: yellow;">发布活动</button>
+    </div>
+</div>
+<div class="content-container">
+    <div class="content">
+        <div class="activity">
+            <div class="top">
+                <div class="user-info">
+                    <img src="img/avatar (3).png" class="avatar" alt="头像">
+                    <div>@无穷小亮</div>
+                </div>
+                <div>
+                    <div>时间: 2024-03-21 12:00:00</div>
+                    <div>山东</div>
+                    <div>需报名人数: 30</div>
+                    <div>已报名人数: 10</div>
+                    <div>活动进行</div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div>
+                    <div class="title">泰山之行</div>
+                    <div>爬山摄影活动是一次绝佳的机会，让您在探索自然之美的同时，捕捉到令人叹为观止的景色。我们精心策划了这次行</div>
+                    <div>程，选择了风景如画的山区，让您在攀登的过程中，记录下每一个精彩瞬间。活动中，我们将提供专业的摄影指导，</div>
+                    <div>教您如何在不同的光线和角度下拍摄出迷人的照片。此外，我们还邀请了经验丰富的导游，他们将带领您穿越崎岖的</div>
+                    <div>山路，确保您的安全。快来加入我们，一起体验爬山摄影的乐趣吧！</div>
+                </div>
+                <div>
+                    <img src="img/FFl-BackGround  (21).jpg" alt="活动图片">
+                </div>
+            </div>
+        </div>
+        <!-- 其他活动框 -->
+        <div class="activity">
+            <div class="top">
+                <div class="user-info">
+                    <img src="img/avatar (1).gif" class="avatar" alt="头像">
+                    <div>@漠叔</div>
+                </div>
+                <div>
+                    <div>时间: 2024-01-29 15:00:00</div>
+                    <div>海南岛</div>
+                    <div>需报名人数: 50</div>
+                    <div>已报名人数: 10</div>
+                    <div>报名结束</div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div>
+                    <div class="title">南海之行</div>
+                    <div>游泳摄影活动将在凉爽的大海边举行，让您在享受水上运动的同时，记录下自己的矫健身姿。我们邀请了专业的</div>
+                    <div>摄影师团队，他们将使用高质量的相机和镜头，捕捉您在水中畅游的精彩瞬间。此外，我们还提供定制的泳衣和泳</div>
+                    <div>帽，让您在拍摄过程中更加自信。无论您是游泳爱好者还是摄影迷，这次活动都将为您带来难忘的体验。</div>
+                </div>
+                <div>
+                    <img src="img/FFl-BackGround  (36).jpg" alt="活动图片">
+                </div>
+            </div>
+        </div>
+        <!-- 其他活动框 -->
+        <div class="activity">
+            <div class="top">
+                <div class="user-info">
+                    <img src="img/avatar (4).jpeg" class="avatar" alt="头像">
+                    <div>@唐纳德.川普</div>
+                </div>
+                <div>
+                    <div>时间: 2024-10-01 18:30:00</div>
+                    <div>纽约</div>
+                    <div>需报名人数: 60</div>
+                    <div>已报名人数: 33</div>
+                    <div>活动报名</div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div>
+                    <div class="title">霉霉之行</div>
+                    <div>音乐会摄影活动将带您走进一场视听盛宴，让您在欣赏美妙音乐的同时，记录下舞台上精彩的表演。我们与知名乐团</div>
+                    <div>合作，为您呈现一场高水平的艺术演出。活动现场，您将有机会近距离接触音乐家，感受他们对音乐的热爱与执着。</div>
+                    <div>我们的专业摄影师团队将为您提供全程拍摄服务，让您轻松获得高质量的演出照片。快来加入我们，一起感受音乐会</div>
+                    <div>摄影的魅力吧！</div>
+                </div>
+                <div>
+                    <img src="img/FFl-BackGround  (2).png" alt="活动图片">
+                </div>
+            </div>
+        </div>
+        <!-- 其他活动框 -->
+        <div class="activity">
+            <div class="top">
+                <div class="user-info">
+                    <img src="img/avatar (5).jpeg" class="avatar" alt="头像">
+                    <div>@上海铎音信息技术有限公司</div>
+                </div>
+                <div>
+                    <div>时间: 2024-05-01 17:00:00</div>
+                    <div>上海市</div>
+                    <div>需报名人数: 1000</div>
+                    <div>已报名人数: 668</div>
+                    <div>活动报名</div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div>
+                    <div class="title">环舟山自行车骑游大会线上赛</div>
+                    <div>骑行摄影活动是一次充满激情与挑战的旅程，让您在驰骋疆场的同时，捕捉到沿途的美丽风光。我们为您提供了高质量的自行车和专业的骑行装备，让您在骑行过程中更加舒适安全。同时，我们还邀请了经验丰富的骑行领队，他们将</div>
+                    <div>量的自行车和专业的骑行装备，让您在骑行过程中更加舒适安全。同时，我们还邀请了经验丰富的骑行领队，他们将</div>
+                    <div>带领您穿越城市的每一个角落，发现那些鲜为人知的美丽景点。活动中，我们的摄影师团队将为您记录下每一次精彩</div>
+                    <div>的骑行瞬间。快来加入我们，一起体验骑行摄影的刺激与乐趣吧！</div>
+                </div>
+                <div>
+                    <img src="img/FFl-BackGround  (9).jpg" alt="活动图片">
+                </div>
+            </div>
+        </div>
+        <!-- 其他活动框 -->
+        <div class="activity">
+            <div class="top">
+                <div class="user-info">
+                    <img src="img/avatar (3).jpg" class="avatar" alt="头像">
+                    <div>@上海汉威信恒展览有限公司</div>
+                </div>
+                <div>
+                    <div>时间: 2024-07-26 08:00:00</div>
+                    <div>北京</div>
+                    <div>需报名人数: 2000</div>
+                    <div>已报名人数: 886</div>
+                    <div>活动预告</div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div>
+                    <div class="title">ChinaJoy-中国国际数码互动娱乐展览会</div>
+                    <div>Cosplay摄影活动是一次充满创意与想象的盛会，让您在扮演各种角色的同时，展现独特的魅力。我们邀请了专业的化</div>
+                    <div>妆师和造型师，为您打造独具特色的Cosplay造型。活动现场，您将有机会与其他Cosplay爱好者互动，共同分享这份</div>
+                    <div>热情与快乐。我们的摄影师团队将为您提供专业的拍摄服务，捕捉您在每个角色中的精彩瞬间。此外，我们还提供丰</div>
+                    <div>富的道具和背景布，让您能够充分展示自己的创意与想象力。快来加入我们，一起体验Cosplay摄影的乐趣吧！</div>
+                </div>
+                <div>
+                    <img src="img/FFl-BackGround  (13).jpg" alt="活动图片">
+                </div>
+            </div>
+        </div>
+        <!-- 其他活动框 -->
+    </div>
+</div>
+<script>
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        });
+    });
+</script>
+</body>
+</html>

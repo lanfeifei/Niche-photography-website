@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+		<title>年度排行榜 - 小众摄影网站</title>
+    <style>
+            /* 共用样式 */
+            body {
+			    font-family: 'LXGWWenKai-Regular', sans-serif;
+			    margin: 0;
+			    padding: 0;
+			    background: rgba(255,255,255,0.5);
+			    backdrop-filter: blur(10px);
+			}
+			
+			@font-face {
+			    font-family: 'LXGWWenKai-Regular'; /* 第二个自定义字体名称 */
+			    src: url('fonts/LXGWWenKai-Regular.ttf') format('truetype'); /* 第二个字体文件路径和格式 */
+			}
+			
+			button {
+				font-family: 'LXGWWenKai-Regular', sans-serif;
+			}
+			
+			textarea {
+			    font-family: 'LXGWWenKai-Regular', sans-serif;
+			}
+			
+			/* 统一导航栏&菜单栏 */
+			.header {
+			    width: 1430px;
+			    height: 50px;
+			    background: linear-gradient(to right,#f3f3f3,#333);
+			    color: white;
+			    display: flex;
+			    justify-content: space-between;
+			    align-items: center;
+			    padding: 0 20px;
+			    margin: 0 auto; /* 居中显示 */
+			}
+			
+			.navigation {
+			    width: 1430px;
+			    background-color: #f4f4f4;
+			    height: 60px;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    padding: 0 20px;
+			    margin: 0 auto;
+			    background-image: url('img/FFl-BackGround  (1).jpg');
+			    background-size: cover; /* 适当裁剪背景图片 */
+			    background-position: center;
+			    background-repeat: no-repeat;
+			}
+			
+			.menu a {
+			    margin: 0 10px;
+			    text-decoration: none;
+			    color: #ffffff;
+			    font-weight: bold;
+			    position: relative;
+			    padding: 8px 16px;
+			}
+			
+			.menu a:before, .menu a:after {
+			    content: '';
+			    position: absolute;
+			    width: 100%;
+			    height: 100%;
+			    border: 2px solid transparent;
+			    transition: border-color 0.3s;
+			}
+			
+			.menu a:before {
+			    top: 0;
+			    left: 0;
+			    border-top-color: #ccc; /* 默认边框颜色 */
+			    border-right-color: transparent;
+			}
+			
+			.menu a:after {
+			    bottom: 0;
+			    right: 0;
+			    border-bottom-color: #ccc; /* 默认边框颜色 */
+			    border-left-color: transparent;
+			}
+			
+			.menu a:hover:before, .menu a:hover:after {
+			    border-color: #1772f6; /* 鼠标悬停时的自定义颜色 */
+			}
+			
+			.menu a:active:before, .menu a:active:after {
+			    border-color: #f3da39; /* 点击后的自定义颜色 */
+			}
+			
+			.login-btn a {
+			    background-color: #ffffff; /* 将背景颜色设置为纯白色 */
+			    color: #333; /* 文字颜色 */
+			    padding: 8px 16px;
+			    border: none;
+			    border-radius: 0; /* 移除圆角 */
+			    box-shadow: none; /* 移除阴影效果 */
+			    cursor: pointer;
+			    text-decoration: none; /* 去掉文字下划线 */
+			    transition: all 0.3s ease; /* 添加过渡效果 */
+			}
+			
+			.login-btn a:hover {
+			    transform: translateY(-2px); /* 悬停时微微向上移动 */
+			    box-shadow: none; /* 悬停时移除阴影效果 */
+			}
+			
+			.logo {
+			    font-size: 20px;
+			    height: 50%;
+			    display: flex;
+			    align-items: center;
+			}
+			
+			.menu {
+			    display: flex;
+			    justify-content: flex-start;
+			    align-items: center;
+			}
+			
+			.menu a {
+			    margin: 0 10px;
+			    text-decoration: none;
+			    color: #fffbfb;
+			}
+			
+			.menu a:last-child {
+			    margin-right: 0;
+			}
+			
+			.login-btn {
+			    margin-left: auto;
+			}
+			
+			 /* 搜索框样式 */
+			            .search-box {
+			                display: flex;
+			                justify-content: center; /* 水平居中 */
+			                align-items: center;
+			                width: 150px;
+			                margin-left: 906px; /* 靠右显示 */
+			                background: rgba(255, 255, 255, 0.5);
+			                backdrop-filter: blur(10px);
+			                border-radius: 20px;
+			                padding: 8px 40px 8px 20px;
+			                position: relative;
+			            }
+			
+			            .search-input {
+			                width: 100%;
+			                border: none;
+			                background: transparent;
+			                font-size: 16px;
+			                outline: none;
+			                padding-left: 5px; /* 调整输入框左内边距 */
+							font-family: "LXGWWenKai-Regular", sans-serif;
+			            }
+			
+			            .search-icon {
+			                position: absolute;
+			                left: 15px; /* 调整SVG的位置 */
+			                top: 50%;
+			                transform: translateY(-50%);
+			                width: 20px;
+			                height: 20px;
+			                fill: #333; /* 更改SVG颜色 */
+			            }
+			
+			            /* 文字链接按钮样式 */
+			            .text-link {
+			                color: #000; /* 黑色文字 */
+			                text-decoration: none; /* 去掉下划线 */
+			                margin-left: 20px; /* 右边距 */
+			            }
+			
+			/* 统一底部 */		
+			footer {
+			    background-color: rgba(255, 255, 255, 0.8);
+			    color: #333;
+			    padding: 5px 0;
+			    height: 30px;
+			    text-align: center;
+			    position: fixed;
+			    bottom: 0;
+			    width: 100%;
+			    backdrop-filter: blur(10px);
+			}
+
+            /* 排行榜样式 */
+            .container {
+                display: flex;
+            }
+            
+            .year-selector {
+                width: 20%;
+                position: fixed;
+                top: calc(50vh - (72px / 2));
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .year-selector button {
+                margin: 10px;
+                padding: 20px;
+                border: none;
+                background-color: #f0f0f0;
+            }
+
+            .spacer {
+                width: 20%;
+            }
+
+            .image-grid {
+                width: 72%;
+                column-count: 3;
+                column-gap: 10px;
+                padding: 10px;
+            }
+
+            .image-card {
+                width: 100%;
+                display: inline-block;
+                break-inside: avoid;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                margin-bottom: 10px;
+                padding: 10px;
+                position: relative;
+                counter-increment: image-counter;
+            }
+
+            .image-card::before {
+                content: "榜➹" counter(image-counter);
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: transparent;
+                color: rgb(255, 255, 255);
+                font-weight: bold;
+                z-index: 1;
+            }
+
+            .image-card img {
+                width: 100%;
+                position: relative;
+                z-index: 0;
+            }
+
+            .image-card span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: white;
+                border-radius: 50%;
+                padding: 5px;
+            }
+
+            .image-card p {
+                text-align: center;
+                margin: 0;
+            }
+
+            .image-card a {
+                text-decoration: none;
+                color: black;
+            }
+            
+            /* 为按钮添加渐变背景 */
+            .button-2020 {
+            background-image: linear-gradient(to right, rgb(41, 128, 185), rgb(109, 213, 250), rgb(255, 255, 255));
+            }
+
+            .button-2021 {
+            background-image: linear-gradient(to right,  rgb(161, 255, 206), rgb(250, 255, 209));
+            }
+
+            .button-2022 {
+            background-image: linear-gradient(to right, rgb(173, 169, 150), rgb(242, 242, 242), rgb(219, 219, 219), rgb(234, 234, 234));
+            }
+
+            .button-2023 {
+            background-image: linear-gradient(to right, rgb(178, 254, 250), rgb(14, 210, 247));
+            }
+
+            .button-2024 {
+            background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 100%);
+            }
+
+            /* 通用样式 */
+            button {
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: transform 0.2s; /* 动画效果 */
+            }
+
+            button:hover {
+            transform: scale(1.1); /* 鼠标悬停时放大 */
+            }
+
+
+    </style>
+</head>
+<body>
+        <!-- 统一导航栏&菜单栏 -->
+		<div class="header">
+		    <img src="img/logo_Ranking.png" alt="Logo" class="logo">
+			<a href="Vip.html" class="text-link">成为会员</a>
+			            <div class="search-box">
+			                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" class="search-icon">
+			                    <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+			                </svg>
+			                <input type="text" class="search-input" placeholder="   请输入搜索内容">
+			            </div>
+		    <div class="login-btn">
+		        <a href="Log-in-Register.html">登陆</a>
+		        <a href="Log-in-Register.html">注册</a>
+		    </div>
+		</div>
+		<div class="navigation">
+		    <div class="menu">
+		        <a href="index.html">首页</a>
+		        <a href="Community.html">社区</a>
+		        <a href="Ranking.html">排行</a>
+		        <a href="Chosen.html">精选</a>
+		        <a href="Activity.html">活动</a>
+		    </div>
+		</div>
+
+    <!-- 排行榜内容 -->
+    <div class="container">
+        <div class="year-selector">
+            <button class="button-2020" onclick="shuffleImages()">2020</button>
+            <button class="button-2021" onclick="shuffleImages()">2021</button>
+            <button class="button-2022" onclick="shuffleImages()">2022</button>
+            <button class="button-2023" onclick="shuffleImages()">2023</button>
+            <button class="button-2024" onclick="shuffleImages()">2024</button>            
+            <!-- 添加更多年份 -->
+        </div>
+        <div class="spacer" style="width: 20%;"></div>
+        <div class="image-grid">            
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (2).jpg" alt="作品展览">
+                <p><a href="#">@辛弃疾</a></p>
+                <p>江山如画，一时多少豪杰。</p>
+            </div>
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (3).png" alt="作品展览">
+                <p><a href="#">@杜牧</a></p>
+                <p>野旷天低树，江清月近人。</p>
+            </div>
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (10).jpg" alt="作品展览">
+                <p><a href="#">@杨慎</a></p>
+                <p>春风又绿江南岸，明月何时照我还</p>
+            </div>
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (13).jpg" alt="作品展览">
+                <p><a href="#">@Li_Bai</a></p>
+                <p>疑是银河落九天，飞娥引凤穿屏障。</p>
+            </div>
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (11).jpg" alt="作品展览">
+                <p><a href="#">@苏轼</a></p>
+                <p>山外青山楼外楼，西湖歌舞几时休。</p>
+            </div>
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (16).jpg" alt="作品展览">
+                <p><a href="#">@李白</a></p>
+                <p>黄河之水天上来，奔流到海不复回。</p>
+            </div>
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (17).jpg" alt="作品展览">
+                <p><a href="#">@孟浩然</a></p>
+                <p>独怜幽草涧边生，上有黄鹂深树鸣</p>
+            </div>
+            <!-- 添加更多图片卡片 -->
+            <div class="image-card">
+                <img src="img/FFl-BackGround  (14).jpg" alt="作品展览">
+                <p><a href="#">@杜甫</a></p>
+                <p>山重水复疑无路，柳暗花明又一村。</p>
+            </div>
+        </div>
+    </div>
+			<!-- 统一底部 -->
+            <footer>
+                <p>© 2024 <a href="https://lanfeifei-completed.mmly.asia/" style="color: black;">兰飞飞</a> 版权所有</p>
+            </footer> 
+
+   <script>
+        function shuffleImages() {
+    const imageContainer = document.querySelector('.image-grid');
+    const images = Array.from(imageContainer.children);
+    const shuffledImages = images.sort(() => Math.random() - 0.5);
+
+    // 清除已有的序号元素
+    const existingIndexes = document.querySelectorAll('.image-card .index');
+    existingIndexes.forEach(index => index.remove());
+
+    shuffledImages.forEach((image, index) => {
+        const indexElement = document.createElement('div');
+        image.appendChild(indexElement);
+        imageContainer.appendChild(image);
+    });
+}
+    </script>
+</body>
+</html>

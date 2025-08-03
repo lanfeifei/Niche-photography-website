@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP会员专属页面</title>
+    <style>
+        body {
+            font-family: 'LXGWWenKai-Regular', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/FFl-BackGround  (4).jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        @font-face {
+			    font-family: 'LXGWWenKai-Regular'; /* 第二个自定义字体名称 */
+			    src: url('fonts/LXGWWenKai-Regular.ttf') format('truetype'); /* 第二个字体文件路径和格式 */
+			}
+
+        .container {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2, p {
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .membership-types {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .membership-type {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 18%;
+            margin: 5px;
+        }
+
+        .membership-type p {
+            margin: 10px 0;
+        }
+
+        .membership-type button {
+            padding: 5px 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .benefits {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-box {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 18%;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到我们的VIP会员充值页面！</h1>
+        
+        <div class="membership-types">
+            <div class="membership-type">
+                <h2>永久会员</h2>
+                <p>价格：\¥99</p>
+                <button>加入</button>
+            </div>
+            <div class="membership-type">
+                <h2>年度会员</h2>
+                <p>价格：\¥50</p>
+                <button>加入</button>
+            </div>
+            <div class="membership-type">
+                <h2>季度会员</h2>
+                <p>价格：\¥30</p>
+                <button>加入</button>
+            </div>
+            <div class="membership-type">
+                <h2>月度会员</h2>
+                <p>价格：\¥10</p>
+                <button>加入</button>
+            </div>
+        </div>
+
+        <div class="benefits">
+            <div class="benefit-box">
+                <h2>发帖字数提升</h2>
+            </div>
+            <div class="benefit-box">
+                <h2>图片原画上传</h2>
+            </div>
+            <div class="benefit-box">
+                <h2>视频更多时长</h2>
+            </div>
+            <div class="benefit-box">
+                <h2>特殊认证功能</h2>
+            </div>
+            <div class="benefit-box">
+                <h2>专属客服解答</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

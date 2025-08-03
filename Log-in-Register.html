@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登录/注册 - 小众摄影网站</title>
+<style>
+/* 共用样式 */
+body {
+  font-family: "LXGWWenKai-Regular", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* 加载自定义字体 */
+@font-face {
+  font-family: 'LXGWWenKai-Regular'; /* 第二个自定义字体名称 */
+  src: url('fonts/LXGWWenKai-Regular.ttf') format('truetype'); /* 第二个字体文件路径和格式 */
+}
+
+/* 按钮样式 */
+button {
+  font-family: "LXGWWenKai-Regular", sans-serif;
+}
+
+/* 重置 body 样式 */
+body {
+  font-family: "LXGWWenKai-Regular", sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+/* 左侧区域 */
+.left-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+/* 右侧区域 */
+.right-side {
+  flex: 2;
+  background-image: url('img/FFl-BackGround  (9).jpg');
+  background-size: cover;
+}
+
+/* 表单容器 */
+.form-container {
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 输入框样式 */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: "LXGWWenKai-Regular", sans-serif; /* 继承父元素字体样式 */
+}
+
+/* 按钮样式 */
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 按钮悬停样式 */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* 链接样式 */
+a {
+  text-decoration: none;
+  color: #007bff;
+  display: inline-block;
+  margin-right: 10px;
+  font-family: "LXGWWenKai-Regular", sans-serif;
+}
+
+/* 返回首页按钮 */
+.return-home-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="left-side">
+  <h1 class="title">欢迎登录</h1>
+  <img src="img/index_logo.png" alt="Logo" style="height: 100px;">
+  <div class="form-container">
+        <label for="username">用户名:</label>
+        <input type="text" id="username" placeholder="请输入用户名/邮箱" style="text-align: center;">
+        <label for="password">密码:</label>
+        <input type="password" id="password" placeholder="请输入密码" style="text-align: center;">
+        <button>登录/注册</button>
+        <a href="Retrieve-passwd.html">忘记密码?</a>
+        <a href="index.html">返回首页◀</a>
+  </div>    
+</div>
+<div class="right-side"></div>
+</body>
+</html>

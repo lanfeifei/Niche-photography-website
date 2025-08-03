@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小众摄影网站</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'BCAlphapipeTSBBold', 'LXGWWenKai-Regular', sans-serif; /* 优先使用第一个字体，如果不可用则使用第二个字体，最后使用系统默认字体 */
+    }
+    /* 定义 @font-face 规则 */
+    @font-face {
+        font-family: 'BCAlphapipeTSBBold'; /* 第一个自定义字体名称 */
+        src: url('fonts/BCAlphapipeTSBBold.woff2') format('woff2'); /* 第一个字体文件路径和格式 */
+    }
+
+    @font-face {
+        font-family: 'LXGWWenKai-Regular'; /* 第二个自定义字体名称 */
+        src: url('fonts/LXGWWenKai-Regular.ttf') format('truetype'); /* 第二个字体文件路径和格式 */
+    }
+
+
+	/* 统一导航栏&菜单栏 */
+    .header {
+        width: 1430px;
+        height: 50px;
+        background: linear-gradient(to right,#f3f3f3,#333);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        margin: 0 auto; /* 居中显示 */
+    }
+
+    .navigation {
+        width: 1430px;
+        background-color: #f4f4f4;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        margin: 0 auto;
+        background-image: url('img/FFl-BackGround  (25).jpg');
+        background-size: cover; /* 适当裁剪背景图片 */
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .menu a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: bold;
+        position: relative;
+        padding: 8px 16px;
+    }
+
+    .menu a:before, .menu a:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 2px solid transparent;
+        transition: border-color 0.3s;
+    }
+
+    .menu a:before {
+        top: 0;
+        left: 0;
+        border-top-color: #ccc; /* 默认边框颜色 */
+        border-right-color: transparent;
+    }
+
+    .menu a:after {
+        bottom: 0;
+        right: 0;
+        border-bottom-color: #ccc; /* 默认边框颜色 */
+        border-left-color: transparent;
+    }
+
+    .menu a:hover:before, .menu a:hover:after {
+        border-color: #1772f6; /* 鼠标悬停时的自定义颜色 */
+    }
+
+    .menu a:active:before, .menu a:active:after {
+        border-color: #f3da39; /* 点击后的自定义颜色 */
+    }
+
+
+
+
+    .login-btn a {
+        background-color: #ffffff; /* 将背景颜色设置为纯白色 */
+        color: #333; /* 文字颜色 */
+        padding: 8px 16px;
+        border: none;
+        border-radius: 0; /* 移除圆角 */
+        box-shadow: none; /* 移除阴影效果 */
+        cursor: pointer;
+        text-decoration: none; /* 去掉文字下划线 */
+        transition: all 0.3s ease; /* 添加过渡效果 */
+    }
+
+    .login-btn a:hover {
+        transform: translateY(-2px); /* 悬停时微微向上移动 */
+        box-shadow: none; /* 悬停时移除阴影效果 */
+    }
+
+
+
+
+    .logo {
+        font-size: 20px;
+        height: 50%;
+        display: flex;
+        align-items: center;
+    }
+
+
+
+    .menu {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .menu a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #fffbfb;
+    }
+
+    .menu a:last-child {
+        margin-right: 0;
+    }
+
+    .login-btn {
+        margin-left: auto;
+    }
+	
+	/* 搜索框样式 */
+	            .search-box {
+	                display: flex;
+	                justify-content: center; /* 水平居中 */
+	                align-items: center;
+	                width: 150px;
+	                margin-left: 906px; /* 靠右显示 */
+	                background: rgba(255, 255, 255, 0.5);
+	                backdrop-filter: blur(10px);
+	                border-radius: 20px;
+	                padding: 8px 40px 8px 20px;
+	                position: relative;
+	            }
+	
+	            .search-input {
+	                width: 100%;
+	                border: none;
+	                background: transparent;
+	                font-size: 16px;
+	                outline: none;
+	                padding-left: 5px; /* 调整输入框左内边距 */
+					font-family: "LXGWWenKai-Regular", sans-serif;
+	            }
+	
+	            .search-icon {
+	                position: absolute;
+	                left: 15px; /* 调整SVG的位置 */
+	                top: 50%;
+	                transform: translateY(-50%);
+	                width: 20px;
+	                height: 20px;
+	                fill: #333; /* 更改SVG颜色 */
+	            }
+	
+	            /* 文字链接按钮样式 */
+	            .text-link {
+	                color: #000; /* 黑色文字 */
+	                text-decoration: none; /* 去掉下划线 */
+	                margin-left: 20px; /* 右边距 */
+	            }
+
+	/* 统一底部 */
+	footer {
+	    background-color: rgba(255, 255, 255, 0.8);
+	    color: #333;
+	    padding: 5px 0;
+	    height: 30px;
+	    text-align: center;
+	    position: fixed;
+	    bottom: 0;
+	    width: 100%;
+	    backdrop-filter: blur(10px);
+	}
+
+    .content {
+        width: 1150px;
+        margin: 20px auto;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 10px;
+    }
+
+
+    .content-block {
+        width: 100%;
+        height: 260px;
+        position: relative;
+        overflow: hidden;
+        display: inline-block; /* 将板块设置为行内块元素 */
+        margin-right: 20px; /* 增大板块之间的右侧间距 */
+    }
+
+    .content-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .author-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 48%; /* 使作者信息只占据内容块高度的底部 2/5 */
+        padding: 3px; /* 调整上下间距 */
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        text-align: left;
+        display: flex;
+        align-items: flex-start; /* 将内容垂直顶部对齐 */
+        cursor: default; /* 禁用光标变化效果 */
+        flex-direction: column; /* 将内容垂直排列 */
+        border: 1px solid transparent; /* 添加透明边框 */
+        box-sizing: border-box; /* 确保边框宽度包含在元素的总宽度内 */
+    }
+
+
+    .author-avatar {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        object-fit: cover; /* 裁剪图像以填充容器 */
+        margin-right: 10px;
+        flex-shrink: 0; /* 防止头像被缩小 */
+    }
+
+    .author-id {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 1px 0; /* 调整上下间距 */
+    }
+
+    .author-name, .author-description {
+        white-space: nowrap; /* 文字不换行 */
+        overflow: hidden; /* 超出部分隐藏 */
+        padding-bottom: 0px; /* 与底部保持距离 */
+        margin: 0px 0; /* 调整一二行间距 */
+    }
+
+    .author-name {
+        font-weight: bold; /* 可选：加粗作者名字 */
+        margin: 0; /* 调整第二行和第三行之间的间距 */
+    }
+
+    .author-description {
+        white-space: nowrap; /* 文字不换行 */
+        overflow: hidden; /* 超出部分隐藏 */
+        text-overflow: ellipsis; /* 超出部分显示省略号 */
+        padding-bottom: 0; /* 与底部保持距离 */
+        margin: 3px 0; /* 调整第二行和第三行之间的间距 */
+    }
+
+    .footer {
+        width: 1400px; /* 设置页脚宽度为 1200px */
+        height: 40px; /* 设置页脚高度为 40px */
+        background: linear-gradient(to right, #ff8c00, #ff0000); /* 使用渐变色作为背景 */
+        text-align: center; /* 文字居中显示 */
+        color: white; /* 设置文字颜色为白色 */
+        font-size: 16px; /* 设置文字大小 */
+        line-height: 40px; /* 设置行高与高度相同，使文字垂直居中 */
+        margin: 0 auto; /* 水平居中 */
+    }
+
+
+    /* 轮播图 */
+
+    .slideshow {
+        width: 1200px;
+        height: 85px;
+        margin: 0 auto; /* 居中显示 */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slide {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        text-align: center;
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <div class="header">
+        <img src="img/index_logo.png" alt="Logo" class="logo">
+		<a href="Vip.html" class="text-link">成为会员</a>
+		            <div class="search-box">
+		                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" class="search-icon">
+		                    <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+		                </svg>
+		                <input type="text" class="search-input" placeholder="   请输入搜索内容">
+		            </div>
+        <div class="login-btn">
+            <a href="Log-in-Register.html">登陆</a>
+            <a href="Log-in-Register.html">注册</a>
+        </div>
+    </div>
+    <div class="navigation">
+        <div class="menu">
+            <a href="index.html">首页</a>
+            <a href="Community.html">社区</a>
+            <a href="Ranking.html">排行</a>
+            <a href="Chosen.html">精选</a>
+            <a href="Activity.html">活动</a>
+        </div>
+    </div>
+    <!-- 轮播图 -->
+    <div class="slideshow">
+        <div class="slide active">
+            <img src="img/FFl-BackGround  (7).png" alt="幻灯片 1">
+            <div class="text">捕捉生活的每一个瞬间</div>
+        </div>
+        <div class="slide">
+            <img src="img/FFl-BackGround  (5).png" alt="幻灯片 2">
+            <div class="text">用镜头讲述你的故事</div>
+        </div>
+        <div class="slide">
+            <img src="img/FFl-BackGround  (6).png" alt="幻灯片 3">
+            <div class="text">记录世界，定格时间</div>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- 对每个块重复以下内容块结构 -->
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (1).png" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (1).gif" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@Maki</span>
+                <p>浔阳江头夜送客，枫叶荻花秋瑟瑟。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (2).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (1).jpg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@青山_green_mountain</span>
+                <p>主人下马客在船，举酒欲饮无管弦。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (2).png" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (1).png" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@dragon_龍</span>
+                <p>醉不成欢惨将别，别时茫茫江浸月。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (3).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (2).jpeg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@drag_の</span>
+                <p>忽闻水上琵琶声，主人忘归客不发。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (4).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (2).png" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@moonlight_月光</span>
+                <p>寻声暗问弹者谁，琵琶声停欲语迟。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (4).png" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (3).jpg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@桜花_cherry_blossom</span>
+                <p>移船相近邀相见，添酒回灯重开宴。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (5).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (3).png" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@firefly_蛍</span>
+                <p>千呼万唤始出来，犹抱琵琶半遮面。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (5).png" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (4).png" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@雲海_cloud_sea</span>
+                <p>转轴拨弦三两声，未成曲调先有情。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (6).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (3).jpg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@starry_night_星夜</span>
+                <p>弦弦掩抑声声思，似诉平生不得志。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (8).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (1).jpeg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@桜_sakura</span>
+                <p>低眉信手续续弹，说尽心中无限事。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (9).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (2).jpeg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@st_o</span>
+                <p>大弦嘈嘈如急雨，小弦切切如私语。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (10).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (3).jpeg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@海_wave</span>
+                <p>嘈嘈切切错杂弹，大珠小珠落玉盘。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (11).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (4).jpeg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@竹林_bamboo</span>
+                <p>间关莺语花底滑，幽咽泉流冰下难。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (12).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (5).jpeg" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@KLjk_;</span>
+                <p>冰泉冷涩弦凝绝，凝绝不通声暂歇。</p>
+            </div>
+        </div>
+        <div class="content-block">
+            <img src="img/FFl-BackGround  (13).jpg" alt="封面图">
+            <div class="author-info">
+                <img src="img/avatar (1).gif" alt="Author Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                <span>@ADSC_?</span>
+                <p>别有幽愁暗恨生，此时无声胜有声。</p>
+            </div>
+        </div>
+        <!-- 内容块结构结束 -->
+    </div>
+    <!-- 统一底部 -->
+    <footer>
+        <p>© 2024 <a href="https://lanfeifei-completed.mmly.asia/" style="color: black;">兰飞飞</a> 版权所有</p>
+    </footer>
+
+    <script src="jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var slides = $('.slide');
+        var currentSlide = 0;
+
+        function showSlide(index) {
+            slides.removeClass('active');
+            slides.eq(index).addClass('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 3000); // 每2秒切换幻灯片
+    });
+</script>
+</body>
+</html>
